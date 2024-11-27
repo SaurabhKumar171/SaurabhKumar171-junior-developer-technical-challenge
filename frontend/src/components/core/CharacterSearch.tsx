@@ -40,7 +40,6 @@ const CharacterSearch = () => {
   const [totalPages, setTotalPages] = useState<number>(1);
 
   const handleSearch = async () => {
-    setLimit(1);
     setCharacters([]);
     if (!searchQuery) return;
     setLoading(true);

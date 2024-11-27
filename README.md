@@ -60,6 +60,8 @@ cd terraform
 #### Configure Variables:
 Open `variables.tf` and set the following variables:
 - **project_id**: Your GCP project ID.
+
+Open `main.tf` and set the following variables:
 - **gcp_credentials_path**: Path to your Google Cloud credentials file.
 - **source_ip**: Set your IP or `0.0.0.0/0` for unrestricted access.
 
@@ -88,6 +90,9 @@ terraform destroy -var="project_id=<your_project_id>"
 ```bash
 cd backend
 ```
+
+#### Open the .env file in the backend directory and set the MONGO_URL to the VM's IP address:
+MONGO_URL=mongodb://<VM_IP>:27017
 
 #### Install Dependencies:
 ```bash

@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = file(var.gcp_credentials_path)
+  credentials = file("gcp_credentials_path")  // put gcp credentials path here
   project     = var.project_id
   region      = var.region
   zone        = var.zone
@@ -18,7 +18,7 @@ provider "google" {
 
 # Create a Persistent Disk
 resource "google_compute_disk" "mongodb_disk" {
-  name  = "mongodb-vm-disk-3"
+  name  = "mongodb-vm-disk"
   type  = "pd-standard"
   size  = var.disk_size
   zone  = var.zone
@@ -26,7 +26,7 @@ resource "google_compute_disk" "mongodb_disk" {
 
 # Create a Compute Instance for MongoDB
 resource "google_compute_instance" "mongodb_vm" {
-  name         = "mongodb-vm-test-3"
+  name         = "mongodb-vm-test"
   machine_type = var.machine_type
 
   # Boot disk with OS
@@ -130,8 +130,8 @@ resource "google_compute_instance" "mongodb_vm" {
 }
 
 # Firewall Rule to Allow MongoDB Access
-resource "google_compute_firewall" "allow_mongo_new_3" {
-  name    = "allow-mongo-new-3"
+resource "google_compute_firewall" "allow_mongo_port" {
+  name    = "allow-mongo-port"
   network = "default"
 
   allow {
@@ -139,7 +139,7 @@ resource "google_compute_firewall" "allow_mongo_new_3" {
     ports    = ["27017"] # MongoDB default port
   }
 
-  source_ranges = [var.source_ip]
+  source_ranges = ["source_ip"]  // put source_ip here(you system's ip) or just put 0.0.0.0/0
 }
 
 
