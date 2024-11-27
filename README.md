@@ -91,8 +91,10 @@ terraform destroy -var="project_id=<your_project_id>"
 cd backend
 ```
 
-#### Open the .env file in the backend directory and set the MONGO_URL to the VM's IP address:
+#### Open the .env file in the backend Replace `<VM_IP>` with the IP address of your VM.:
+```bash
 MONGO_URL=mongodb://<VM_IP>:27017
+```
 
 #### Install Dependencies:
 ```bash
